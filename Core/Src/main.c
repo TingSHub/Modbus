@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +33,22 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#undef TAG
+#define TAG __FILE__
+#define LOG_ENABLE 1
+#if LOG_ENABLE
+#define log_crit(args...)         printk(TAG " [c]: " args)
+#define log_err(args...)          printk(TAG " [e]: " args)
+#define log_warn(args...)         printk(TAG " [w]: " args)
+#define log_info(args...)         printk(TAG " [i]: " args)
+#define log_debug(args...)        printk(TAG " [d]: " args)
+#else
+#define log_crit(args...)
+#define log_err(args...)
+#define log_warn(args...)
+#define log_info(args...)
+#define log_debug(args...)
+#endif
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -278,7 +295,7 @@ void start_hello(void *argument)
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
 	for(;;) {
-		printf("Hello World.\n");
+		printk("Hello World.\r\n");
 		osDelay(1000);
 	}
   /* USER CODE END 5 */
@@ -297,6 +314,7 @@ void start_blink(void *argument)
   /* Infinite loop */
   for(;;) {
 		HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		osDelay(1000);
   }
   /* USER CODE END start_blink */

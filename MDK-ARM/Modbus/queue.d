@@ -1,0 +1,15 @@
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
+modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\string.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
+modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\queue.o: ../Core/Inc/FreeRTOSConfig.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h

@@ -61,9 +61,26 @@ void Error_Handler(void);
 #define LED_RED_GPIO_Port GPIOF
 #define LED_GREEN_Pin GPIO_PIN_10
 #define LED_GREEN_GPIO_Port GPIOF
+#define Mode_485_Pin GPIO_PIN_8
+#define Mode_485_GPIO_Port GPIOG
 
 /* USER CODE BEGIN Private defines */
-
+#undef TAG
+#define TAG __FILE__
+#define LOG_ENABLE 1
+#if LOG_ENABLE
+#define log_crit(args...)         printk(TAG " [c]: " args)
+#define log_err(args...)          printk(TAG " [e]: " args)
+#define log_warn(args...)         printk(TAG " [w]: " args)
+#define log_info(args...)         printk(TAG " [i]: " args)
+#define log_debug(args...)        printk(TAG " [d]: " args)
+#else
+#define log_crit(args...)
+#define log_err(args...)
+#define log_warn(args...)
+#define log_info(args...)
+#define log_debug(args...)
+#endif
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -55,6 +55,10 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_usart2_rx;
+extern DMA_HandleTypeDef hdma_usart2_tx;
+extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
@@ -159,6 +163,86 @@ void DebugMon_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f4xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles DMA1 stream5 global interrupt.
+  */
+void DMA1_Stream5_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream5_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream5_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart2_rx);
+  /* USER CODE BEGIN DMA1_Stream5_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream5_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 stream6 global interrupt.
+  */
+void DMA1_Stream6_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream6_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream6_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart2_tx);
+  /* USER CODE BEGIN DMA1_Stream6_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream6_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+	if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_RXNE))
+  {
+    huart2.RxCpltCallback(&huart2);
+    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_RXNE);
+  }
+  if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_ORE))
+  {
+    uint16_t pucByte = (uint16_t)((&huart2)->Instance->DR & (uint16_t)0x01FF);
+    __HAL_UART_CLEAR_OREFLAG(&huart2);
+  }
+  if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_TC))
+  {
+    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_TC);
+  }
+  /* USER CODE END USART2_IRQn 0 */
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+  if (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE))
+  {
+    huart3.RxCpltCallback(&huart3);
+    __HAL_UART_CLEAR_FLAG(&huart3, UART_FLAG_RXNE);
+  }
+  if (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_ORE))
+  {
+    uint16_t pucByte = (uint16_t)((&huart3)->Instance->DR & (uint16_t)0x01FF);
+    __HAL_UART_CLEAR_OREFLAG(&huart3);
+  }
+  if (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_TC))
+  {
+    __HAL_UART_CLEAR_FLAG(&huart3, UART_FLAG_TC);
+  }
+  /* USER CODE END USART3_IRQn 0 */
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
+}
 
 /**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.

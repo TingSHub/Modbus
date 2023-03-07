@@ -3,8 +3,8 @@ modbus\user_mb_app_m.o: ..\FreeModbus\port\user_mb_app.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mb.h
 modbus\user_mb_app_m.o: ../FreeModbus/port/port.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\user_mb_app_m.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -50,11 +50,11 @@ modbus\user_mb_app_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mbconfig.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\assert.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\inttypes.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdbool.h
-modbus\user_mb_app_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mbport.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mb_m.h

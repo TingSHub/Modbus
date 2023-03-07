@@ -1,8 +1,8 @@
 modbus\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-modbus\event_groups.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
+modbus\event_groups.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\event_groups.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\event_groups.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\event_groups.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\event_groups.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

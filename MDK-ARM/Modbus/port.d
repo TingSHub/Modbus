@@ -1,7 +1,7 @@
 modbus\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c
 modbus\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\port.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\port.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\port.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\port.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\port.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

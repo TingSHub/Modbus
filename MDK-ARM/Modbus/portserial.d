@@ -1,8 +1,8 @@
 modbus\portserial.o: ..\FreeModbus\port\FreeRTOS\portserial.c
 modbus\portserial.o: ../FreeModbus/port/port.h
 modbus\portserial.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\portserial.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\portserial.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\portserial.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -48,11 +48,11 @@ modbus\portserial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 modbus\portserial.o: ../FreeModbus/modbus/include/mbconfig.h
 modbus\portserial.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 modbus\portserial.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\assert.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\inttypes.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdbool.h
-modbus\portserial.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+modbus\portserial.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\portserial.o: ../FreeModbus/modbus/include/mb.h
 modbus\portserial.o: ../FreeModbus/modbus/include/mbport.h
 modbus\portserial.o: ../FreeModbus/modbus/include/mbproto.h

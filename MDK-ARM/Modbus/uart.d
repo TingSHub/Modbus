@@ -1,11 +1,11 @@
 modbus\uart.o: ..\Core\Src\uart.c
-modbus\uart.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
-modbus\uart.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
-modbus\uart.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\string.h
-modbus\uart.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
+modbus\uart.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+modbus\uart.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+modbus\uart.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+modbus\uart.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\uart.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 modbus\uart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\uart.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
+modbus\uart.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\uart.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\uart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\uart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

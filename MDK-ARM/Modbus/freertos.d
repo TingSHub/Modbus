@@ -1,7 +1,7 @@
 modbus\freertos.o: ../Core/Src/freertos.c
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -49,11 +49,11 @@ modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbconfig.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\assert.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\inttypes.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdbool.h
-modbus\freertos.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbport.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\freertos.o: ../Core/Inc/uart.h

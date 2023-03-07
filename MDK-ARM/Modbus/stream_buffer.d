@@ -1,8 +1,8 @@
 modbus\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-modbus\stream_buffer.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
-modbus\stream_buffer.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\string.h
+modbus\stream_buffer.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+modbus\stream_buffer.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\stream_buffer.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
+modbus\stream_buffer.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

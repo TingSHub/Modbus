@@ -108,16 +108,13 @@ void MX_FREERTOS_Init(void) {
   HAL_TIM_Base_Start(&htim7);
   //eMBMasterInit(MB_RTU, 3, 115200, MB_PAR_NONE);
   //eMBMasterEnable();
-	log_info("before eMBInit\n");
   eMBInit(MB_RTU, 0x01, 2, 115200, MB_PAR_NONE);
   eMBEnable();
-  log_info("after eMBInit\n");
   //HelloHandle = osThreadNew(start_hello, NULL, &Hello_attributes);
   BlinkLedHandle = osThreadNew(start_blink, NULL, &BlinkLed_attributes);
-  printk("debug\n");
   //SysTaskHandle = osThreadNew(start_sys_task, NULL, &SysTask_attributes);
-  MasterTaskHandle = osThreadNew(start_master_task, NULL, &MasterTask_attributes);
-  //SlaveTaskHandle = osThreadNew(start_slave_task, NULL, &SlaveTask_attributes);
+  //MasterTaskHandle = osThreadNew(start_master_task, NULL, &MasterTask_attributes);
+  SlaveTaskHandle = osThreadNew(start_slave_task, NULL, &SlaveTask_attributes);
   /* USER CODE END Init */
 /* USER CODE BEGIN Header */
 /**
@@ -180,7 +177,6 @@ void start_blink(void *argument)
   for(;;)
   {
     HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-    printk("blink\n");
     osDelay(1000);
   }
   /* USER CODE END start_blink */

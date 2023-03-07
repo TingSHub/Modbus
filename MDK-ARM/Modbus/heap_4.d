@@ -1,8 +1,8 @@
 modbus\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-modbus\heap_4.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
+modbus\heap_4.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\heap_4.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\heap_4.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\heap_4.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\heap_4.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\heap_4.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

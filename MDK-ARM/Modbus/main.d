@@ -7,7 +7,7 @@ modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 modbus\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 modbus\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 modbus\main.o: ../Drivers/CMSIS/Include/core_cm4.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\main.o: ../Drivers/CMSIS/Include/cmsis_version.h
 modbus\main.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 modbus\main.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -15,7 +15,7 @@ modbus\main.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 modbus\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 modbus\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -46,7 +46,7 @@ modbus\main.o: ../Core/Inc/dma.h
 modbus\main.o: ../Core/Inc/tim.h
 modbus\main.o: ../Core/Inc/usart.h
 modbus\main.o: ../Core/Inc/gpio.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\main.o: ../Core/Inc/uart.h
 modbus\main.o: ../FreeModbus/modbus/include/mb.h
 modbus\main.o: ../FreeModbus/port/port.h
@@ -55,9 +55,9 @@ modbus\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 modbus\main.o: ../FreeModbus/modbus/include/mbconfig.h
 modbus\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 modbus\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\assert.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\inttypes.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
-modbus\main.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdbool.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+modbus\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\main.o: ../FreeModbus/modbus/include/mbport.h
 modbus\main.o: ../FreeModbus/modbus/include/mbproto.h

@@ -1,9 +1,9 @@
 modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
-modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\string.h
+modbus\queue.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+modbus\queue.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\queue.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\queue.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\queue.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\queue.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

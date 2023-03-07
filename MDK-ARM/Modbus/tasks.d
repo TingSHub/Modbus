@@ -1,9 +1,9 @@
 modbus\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-modbus\tasks.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
-modbus\tasks.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\string.h
+modbus\tasks.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+modbus\tasks.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\tasks.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\tasks.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\tasks.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\tasks.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\tasks.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

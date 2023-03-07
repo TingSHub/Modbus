@@ -1,8 +1,8 @@
 modbus\porttimer_m.o: ..\FreeModbus\port\FreeRTOS\porttimer_m.c
 modbus\porttimer_m.o: ../FreeModbus/port/port.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\porttimer_m.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -48,11 +48,11 @@ modbus\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mbconfig.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\assert.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\inttypes.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdarg.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdbool.h
-modbus\porttimer_m.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdio.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mb.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mbport.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mbproto.h

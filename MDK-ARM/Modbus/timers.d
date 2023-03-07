@@ -1,8 +1,8 @@
 modbus\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
-modbus\timers.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdlib.h
+modbus\timers.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-modbus\timers.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stddef.h
-modbus\timers.o: D:\Keil_v5\ARM\ARM5\Bin\..\include\stdint.h
+modbus\timers.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+modbus\timers.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 modbus\timers.o: ../Core/Inc/FreeRTOSConfig.h
 modbus\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 modbus\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

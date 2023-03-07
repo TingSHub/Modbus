@@ -2,6 +2,7 @@ modbus\mbutils.o: ..\FreeModbus\modbus\functions\mbutils.c
 modbus\mbutils.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\mbutils.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\mbutils.o: ../FreeModbus/port/port.h
+modbus\mbutils.o: ../Core/Inc/uart.h
 modbus\mbutils.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\mbutils.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\mbutils.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

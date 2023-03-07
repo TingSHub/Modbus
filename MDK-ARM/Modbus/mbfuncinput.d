@@ -2,6 +2,7 @@ modbus\mbfuncinput.o: ..\FreeModbus\modbus\functions\mbfuncinput.c
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\mbfuncinput.o: ../FreeModbus/port/port.h
+modbus\mbfuncinput.o: ../Core/Inc/uart.h
 modbus\mbfuncinput.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

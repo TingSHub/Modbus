@@ -139,7 +139,14 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
    __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_TC);
   if (xRxEnable) {
     /* enable RX interrupt */
+#if USE_DMA
+  __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
+  #define MB_SER_PDU_SIZE_MAX 256 /*!< Maximum size of a Modbus RTU frame. */
+  extern UCHAR ucRTUBuf[];
+  HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX);
+#else
     __HAL_UART_ENABLE_IT(serial, UART_IT_RXNE);
+#endif
     /* switch 485 to receive mode */
     MODBUS_DEBUG("RS485_RX_MODE\r\n");
     SLAVE_RS485_RX_MODE;
@@ -148,7 +155,11 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
     MODBUS_DEBUG("RS485_TX_MODE\r\n");
     SLAVE_RS485_TX_MODE;
     /* disable RX interrupt */
+#if USE_DMA
+  __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
+#else
     __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE);
+#endif
   }
   if (xTxEnable) {
     /* start serial transmit */
@@ -170,7 +181,8 @@ BOOL xMBPortSerialPutByte(CHAR ucByte) {
 }
 /*Get a byte from fifo*/
 BOOL xMBPortSerialGetByte(CHAR *pucByte) {
-  Get_from_fifo(&Slave_serial_rx_fifo, (uint8_t *)pucByte, 1);
+  // Get_from_fifo(&Slave_serial_rx_fifo, (uint8_t *)pucByte, 1);
+  *pucByte = stm32_getc();
   return TRUE;
 }
 
@@ -217,13 +229,13 @@ static void serial_soft_trans_irq(void *parameter) {
  * @retval None
  */
 void Slave_RxCpltCallback(UART_HandleTypeDef *huart) {
-  int ch = -1;
-  while (1) {
-    ch = stm32_getc();
-    if (ch == -1)
-      break;
-    Put_in_fifo(&Slave_serial_rx_fifo, (uint8_t *)&ch, 1);
-  }
+  // int ch = -1;
+  // while (1) {
+  //   ch = stm32_getc();
+  //   if (ch == -1)
+  //     break;
+  //   Put_in_fifo(&Slave_serial_rx_fifo, (uint8_t *)&ch, 1);
+  // }
   prvvUARTRxISR();
 }
 /*UART发送一个字节*/

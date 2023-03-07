@@ -197,6 +197,15 @@ eMBErrorCode eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame,
   return eStatus;
 }
 
+#if USE_DMA
+BOOL xMBRTUReceiveFSM(void) {
+  extern DMA_HandleTypeDef hdma_usart2_rx;
+  usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
+  eRcvState = STATE_RX_RCV;
+  vMBPortTimersEnable();
+  return true;
+}
+#else
 BOOL xMBRTUReceiveFSM(void) {
   BOOL xTaskNeedSwitch = FALSE;
   UCHAR ucByte;
@@ -249,6 +258,7 @@ BOOL xMBRTUReceiveFSM(void) {
   }
   return xTaskNeedSwitch;
 }
+#endif
 
 BOOL xMBRTUTransmitFSM(void) {
   BOOL xNeedPoll = FALSE;

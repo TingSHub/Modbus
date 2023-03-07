@@ -2,6 +2,7 @@ modbus\mbascii.o: ..\FreeModbus\modbus\ascii\mbascii.c
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 modbus\mbascii.o: ../FreeModbus/port/port.h
+modbus\mbascii.o: ../Core/Inc/uart.h
 modbus\mbascii.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

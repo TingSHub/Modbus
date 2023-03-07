@@ -1,6 +1,7 @@
 modbus\portevent_m.o: ..\FreeModbus\port\FreeRTOS\portevent_m.c
 modbus\portevent_m.o: ../FreeModbus/modbus/include/mb.h
 modbus\portevent_m.o: ../FreeModbus/port/port.h
+modbus\portevent_m.o: ../Core/Inc/uart.h
 modbus\portevent_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\portevent_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\portevent_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

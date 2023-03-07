@@ -22,6 +22,7 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "port.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -198,6 +199,14 @@ void DMA1_Stream6_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
+#if USE_DMA
+	if(__HAL_UART_GET_FLAG(&huart2,UART_FLAG_IDLE))
+  {      
+    __HAL_UART_CLEAR_IDLEFLAG(&huart2);   
+    HAL_UART_DMAStop(&huart2);
+    huart2.RxCpltCallback(&huart2);
+  }
+#elif
 	if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_RXNE))
   {
     huart2.RxCpltCallback(&huart2);
@@ -212,6 +221,8 @@ void USART2_IRQHandler(void)
   {
     __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_TC);
   }
+  // HAL_UART_IRQHandler(&huart2);
+#endif
   /* USER CODE END USART2_IRQn 0 */
   /* USER CODE BEGIN USART2_IRQn 1 */
 

@@ -2,6 +2,7 @@ modbus\user_mb_app_m.o: ..\FreeModbus\port\user_mb_app_m.c
 modbus\user_mb_app_m.o: ..\FreeModbus\port\user_mb_app.h
 modbus\user_mb_app_m.o: ../FreeModbus/modbus/include/mb.h
 modbus\user_mb_app_m.o: ../FreeModbus/port/port.h
+modbus\user_mb_app_m.o: ../Core/Inc/uart.h
 modbus\user_mb_app_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\user_mb_app_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

@@ -1,5 +1,6 @@
 modbus\mbcrc.o: ..\FreeModbus\modbus\rtu\mbcrc.c
 modbus\mbcrc.o: ../FreeModbus/port/port.h
+modbus\mbcrc.o: ../Core/Inc/uart.h
 modbus\mbcrc.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\mbcrc.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\mbcrc.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

@@ -1,5 +1,6 @@
 modbus\porttimer_m.o: ..\FreeModbus\port\FreeRTOS\porttimer_m.c
 modbus\porttimer_m.o: ../FreeModbus/port/port.h
+modbus\porttimer_m.o: ../Core/Inc/uart.h
 modbus\porttimer_m.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

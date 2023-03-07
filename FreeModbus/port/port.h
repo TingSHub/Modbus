@@ -21,6 +21,7 @@
 
 #ifndef _PORT_H
 #define _PORT_H
+#include "uart.h"
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
 #include "cmsis_os2.h"
@@ -41,6 +42,7 @@
 #define PR_END_EXTERN_C }
 /*IF DEBUG*/
 #define DEBUG 1
+#define USE_DMA 1
 
 #if DEBUG
 #define MODBUS_DEBUG(args...)                                             \

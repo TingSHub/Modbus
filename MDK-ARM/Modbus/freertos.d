@@ -44,6 +44,7 @@ modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsi
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mb.h
 modbus\freertos.o: ../FreeModbus/port/port.h
+modbus\freertos.o: ../Core/Inc/uart.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 modbus\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbconfig.h
@@ -56,5 +57,4 @@ modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbport.h
 modbus\freertos.o: ../FreeModbus/modbus/include/mbproto.h
-modbus\freertos.o: ../Core/Inc/uart.h
 modbus\freertos.o: ../Core/Inc/tim.h

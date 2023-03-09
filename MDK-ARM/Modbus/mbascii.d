@@ -57,6 +57,7 @@ modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\mbascii.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\mbascii.o: ../FreeModbus/modbus/include/mb.h
+modbus\mbascii.o: ../FreeModbus/port/port.h
 modbus\mbascii.o: ../FreeModbus/modbus/include/mbport.h
 modbus\mbascii.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\mbascii.o: ..\FreeModbus\modbus\ascii\mbascii.h

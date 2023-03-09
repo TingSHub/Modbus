@@ -55,5 +55,6 @@ modbus\portserial_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\portserial_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\portserial_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\portserial_m.o: ../FreeModbus/modbus/include/mb.h
+modbus\portserial_m.o: ../FreeModbus/port/port.h
 modbus\portserial_m.o: ../FreeModbus/modbus/include/mbport.h
 modbus\portserial_m.o: ../FreeModbus/modbus/include/mbproto.h

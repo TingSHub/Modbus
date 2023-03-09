@@ -57,6 +57,7 @@ modbus\mbfuncdisc_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\mbfuncdisc_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\mbfuncdisc_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\mbfuncdisc_m.o: ../FreeModbus/modbus/include/mb.h
+modbus\mbfuncdisc_m.o: ../FreeModbus/port/port.h
 modbus\mbfuncdisc_m.o: ../FreeModbus/modbus/include/mbport.h
 modbus\mbfuncdisc_m.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\mbfuncdisc_m.o: ../FreeModbus/modbus/include/mb_m.h

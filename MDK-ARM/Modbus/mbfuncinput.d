@@ -57,6 +57,7 @@ modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\mbfuncinput.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\mbfuncinput.o: ../FreeModbus/modbus/include/mb.h
+modbus\mbfuncinput.o: ../FreeModbus/port/port.h
 modbus\mbfuncinput.o: ../FreeModbus/modbus/include/mbport.h
 modbus\mbfuncinput.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\mbfuncinput.o: ../FreeModbus/modbus/include/mbframe.h

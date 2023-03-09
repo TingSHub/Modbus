@@ -55,6 +55,7 @@ modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\porttimer_m.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mb.h
+modbus\porttimer_m.o: ../FreeModbus/port/port.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mbport.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\porttimer_m.o: ../FreeModbus/modbus/include/mb_m.h

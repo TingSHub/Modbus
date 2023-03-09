@@ -29,7 +29,7 @@ static TaskHandle_t thread_serial_soft_trans_irq = NULL;
 /* serial event */
 static EventGroupHandle_t event_serial;
 /* modbus slave serial device */
-static UART_HandleTypeDef *serial;
+UART_HandleTypeDef *serial;
 /*
  * Serial FIFO mode
  */
@@ -45,7 +45,7 @@ static void prvvUARTTxReadyISR(void);
 static void prvvUARTRxISR(void);
 static void serial_soft_trans_irq(void *parameter);
 static void Slave_TxCpltCallback(struct __UART_HandleTypeDef *huart);
-static void Slave_RxCpltCallback(struct __UART_HandleTypeDef *huart);
+void Slave_RxCpltCallback(struct __UART_HandleTypeDef *huart);
 static int stm32_getc(void);
 static int stm32_putc(CHAR c);
 /* ----------------------- Start implementation -----------------------------*/
@@ -105,9 +105,7 @@ BOOL xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,
   }
   __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE);
   __HAL_UART_DISABLE_IT(serial, UART_IT_TC);
-  /*registe recieve callback*/
-  HAL_UART_RegisterCallback(serial, HAL_UART_RX_COMPLETE_CB_ID,
-                            Slave_RxCpltCallback);
+
   /* software initialize */
   Slave_serial_rx_fifo.buffer = rx_buff;
   Slave_serial_rx_fifo.get_index = 0;
@@ -135,12 +133,12 @@ BOOL xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,
 }
 
 void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
-    __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_RXNE);
-   __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_TC);
+  __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_RXNE);
+  __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_TC);
   if (xRxEnable) {
     /* enable IDLE interrupt */
-  __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
-  HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX);
+    __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
+    HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX + 1);
     /* switch 485 to receive mode */
     MODBUS_DEBUG("RS485_RX_MODE\r\n");
     SLAVE_RS485_RX_MODE;
@@ -149,17 +147,11 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
     MODBUS_DEBUG("RS485_TX_MODE\r\n");
     SLAVE_RS485_TX_MODE;
     /* disable IDLE interrupt */
-  __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
+    __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
   }
   if (xTxEnable) {
     /* start serial transmit */
     xEventGroupSetBits(event_serial, EVENT_SERIAL_TRANS_START);
-  } else {
-    /* stop serial transmit */
-    xEventGroupClearBits(event_serial, EVENT_SERIAL_TRANS_START);
-    /*测试帧数*/
-    // printf("ms=%.2f,fps=%.2f\r\n", __HAL_TIM_GetCounter(&htim7) / 100.f,
-    // 1000.f / (__HAL_TIM_GetCounter(&htim7) / 100.f));
   }
 }
 
@@ -171,7 +163,6 @@ BOOL xMBPortSerialPutByte(CHAR ucByte) {
 }
 /*Get a byte from fifo*/
 BOOL xMBPortSerialGetByte(CHAR *pucByte) {
-  // Get_from_fifo(&Slave_serial_rx_fifo, (uint8_t *)pucByte, 1);
   *pucByte = stm32_getc();
   return TRUE;
 }
@@ -204,7 +195,7 @@ static void serial_soft_trans_irq(void *parameter) {
     /* waiting for serial transmit start */
     xEventGroupWaitBits(event_serial,             /* 事件对象句柄 */
                         EVENT_SERIAL_TRANS_START, /* 接收任务感兴趣的事件 */
-                        pdFALSE,                  /* 退出时清除事件?? */
+                        pdTRUE,                  /* 退出时清除事件?? */
                         pdFALSE,        /* 满足感兴趣的所有事?? */
                         portMAX_DELAY); /* 指定超时事件,无限等待 */
     /* execute modbus callback */
@@ -219,15 +210,9 @@ static void serial_soft_trans_irq(void *parameter) {
  * @retval None
  */
 void Slave_RxCpltCallback(UART_HandleTypeDef *huart) {
-  // int ch = -1;
-  // while (1) {
-  //   ch = stm32_getc();
-  //   if (ch == -1)
-  //     break;
-  //   Put_in_fifo(&Slave_serial_rx_fifo, (uint8_t *)&ch, 1);
-  // }
   prvvUARTRxISR();
 }
+
 /*UART发送一个字节*/
 static int stm32_putc(CHAR c) {
   serial->Instance->DR = c;

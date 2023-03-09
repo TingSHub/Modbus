@@ -28,7 +28,19 @@ Project File Date:  03/09/2023
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'F:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Modbus'
 Note: source file '..\FreeModbus\port\FreeRTOS\port.c' - object file renamed from 'Modbus\port.o' to 'Modbus\port_1.o'.
-"Modbus\Modbus.axf" - 0 Error(s), 0 Warning(s).
+compiling mbrtu.c...
+compiling portserial.c...
+..\FreeModbus\port\FreeRTOS\portserial.c(141): warning:  #167-D: argument of type "volatile UCHAR *" is incompatible with parameter of type "uint8_t *"
+      HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX + 1);
+..\FreeModbus\port\FreeRTOS\portserial.c(193): warning:  #177-D: variable "recved_event"  was declared but never referenced
+    uint32_t recved_event;
+..\FreeModbus\port\FreeRTOS\portserial.c(47): warning:  #177-D: function "Slave_TxCpltCallback"  was declared but never referenced
+  static void Slave_TxCpltCallback(struct __UART_HandleTypeDef *huart);
+..\FreeModbus\port\FreeRTOS\portserial.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=23648 RO-data=1084 RW-data=396 ZI-data=21508  
+FromELF: creating hex file...
+"Modbus\Modbus.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +64,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

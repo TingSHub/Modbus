@@ -97,3 +97,5 @@ void Put_in_fifo(Serial_fifo *buff, uint8_t *putdata, int length);
 int Get_from_fifo(Serial_fifo *buff, uint8_t *getdata, int length);
 extern __inline bool IS_IRQ(void);
 #endif
+
+extern UART_HandleTypeDef *serial;

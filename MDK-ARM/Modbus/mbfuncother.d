@@ -57,6 +57,7 @@ modbus\mbfuncother.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 modbus\mbfuncother.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\mbfuncother.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\mbfuncother.o: ../FreeModbus/modbus/include/mb.h
+modbus\mbfuncother.o: ../FreeModbus/port/port.h
 modbus\mbfuncother.o: ../FreeModbus/modbus/include/mbport.h
 modbus\mbfuncother.o: ../FreeModbus/modbus/include/mbproto.h
 modbus\mbfuncother.o: ../FreeModbus/modbus/include/mbframe.h

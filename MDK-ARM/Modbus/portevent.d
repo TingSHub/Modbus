@@ -57,3 +57,4 @@ modbus\portevent.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 modbus\portevent.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 modbus\portevent.o: ../FreeModbus/modbus/include/mbport.h
 modbus\portevent.o: ../FreeModbus/modbus/include/mbproto.h
+modbus\portevent.o: ../FreeModbus/port/port.h

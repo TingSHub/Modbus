@@ -198,12 +198,15 @@ eMBErrorCode eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame,
 }
 
 BOOL xMBRTUReceiveFSM(void) {
-  extern DMA_HandleTypeDef hdma_usart2_rx;
-  usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
-  if (usRcvBufferPos >= MB_SER_PDU_SIZE_MAX) 
-    eRcvState = STATE_RX_ERROR;
-  else
-    eRcvState = STATE_RX_RCV;
+  CHAR tmp;
+	xMBPortSerialGetByte(&tmp);
+  switch (eRcvState) {
+    case STATE_RX_RCV:
+      eRcvState = STATE_RX_ERROR;
+      break;
+    default:
+      break;
+  }
   vMBPortTimersEnable();
   return true;
 }
@@ -212,6 +215,9 @@ BOOL xMBRTUTransmitFSM(void) {
   BOOL xNeedPoll = FALSE;
 
   assert_param(eRcvState == STATE_RX_IDLE);
+	
+  extern DMA_HandleTypeDef hdma_usart2_tx;
+  __HAL_DMA_ENABLE_IT(&hdma_usart2_tx, DMA_IT_TC); //使能DMA传输完成中断
 
   switch (eSndState) {
     /* We should not get a transmitter event if the transmitter is in
@@ -222,18 +228,7 @@ BOOL xMBRTUTransmitFSM(void) {
     break;
 
   case STATE_TX_XMIT:
-    /* check if we are finished. */
-    if (usSndBufferCount != 0) {
-      xMBPortSerialPutByte((CHAR)*pucSndBufferCur);
-      pucSndBufferCur++; /* next byte in sendbuffer. */
-      usSndBufferCount--;
-    } else {
-      xNeedPoll = xMBPortEventPost(EV_FRAME_SENT);
-      /* Disable transmitter. This prevents another transmit buffer
-       * empty interrupt. */
-      vMBPortSerialEnable(TRUE, FALSE);
-      eSndState = STATE_TX_IDLE;
-    }
+    HAL_UART_Transmit_DMA(serial, (UCHAR*)pucSndBufferCur, usSndBufferCount);
     break;
   }
 
@@ -242,6 +237,8 @@ BOOL xMBRTUTransmitFSM(void) {
 
 BOOL xMBRTUTimerT35Expired(void) {
   BOOL xNeedPoll = FALSE;
+  
+  __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE); //关闭接收中断
 
   switch (eRcvState) {
     /* Timer t35 expired. Startup phase is finished. */
@@ -268,4 +265,31 @@ BOOL xMBRTUTimerT35Expired(void) {
   vMBPortTimersDisable();
   eRcvState = STATE_RX_IDLE;
   return xNeedPoll;
+}
+
+/**
+ * @brief  Rx Idle completed callbacks.
+ * @param  huart  Pointer to a UART_HandleTypeDef structure that contains
+ *                the configuration information for the specified UART module.
+ * @retval None
+ */
+void Slave_IDLECallback(UART_HandleTypeDef *huart) {
+  extern DMA_HandleTypeDef hdma_usart2_rx;
+  usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
+  if (usRcvBufferPos >= MB_SER_PDU_SIZE_MAX) 
+    eRcvState = STATE_RX_ERROR;
+  else
+    eRcvState = STATE_RX_RCV;
+  __HAL_UART_ENABLE_IT(serial, UART_IT_RXNE); //使能接收中断
+  vMBPortTimersEnable();
+}
+
+void Slave_DMATransmitCallback(DMA_HandleTypeDef *hdma_usart_rx) {
+  extern DMA_HandleTypeDef hdma_usart2_tx;
+  __HAL_DMA_DISABLE_IT(&hdma_usart2_tx, DMA_IT_TC); //关闭DMA传输完成中断
+  xMBPortEventPost(EV_FRAME_SENT);
+  /* Disable transmitter. This prevents another transmit buffer
+    * empty interrupt. */
+  vMBPortSerialEnable(TRUE, FALSE);
+  eSndState = STATE_TX_IDLE;
 }

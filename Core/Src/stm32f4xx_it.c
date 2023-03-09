@@ -206,7 +206,7 @@ void USART2_IRQHandler(void)
     HAL_UART_DMAStop(&huart2);
     huart2.RxCpltCallback(&huart2);
   }
-#elif
+#else
 	if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_RXNE))
   {
     huart2.RxCpltCallback(&huart2);

@@ -4,6 +4,8 @@
         "port.h": "c",
         "mbrtu.h": "c",
         "mb.h": "c",
-        "mbport.h": "c"
+        "mbport.h": "c",
+        "task.h": "c",
+        "timers.h": "c"
     }
 }

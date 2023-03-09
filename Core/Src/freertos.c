@@ -108,7 +108,7 @@ void MX_FREERTOS_Init(void) {
   HAL_TIM_Base_Start(&htim7);
   //eMBMasterInit(MB_RTU, 3, 115200, MB_PAR_NONE);
   //eMBMasterEnable();
-  eMBInit(MB_RTU, 0x01, 2, 115200, MB_PAR_NONE);
+  eMBInit(MB_RTU, 0x01, 2, 921600, MB_PAR_NONE);
   eMBEnable();
   //HelloHandle = osThreadNew(start_hello, NULL, &Hello_attributes);
   BlinkLedHandle = osThreadNew(start_blink, NULL, &BlinkLed_attributes);

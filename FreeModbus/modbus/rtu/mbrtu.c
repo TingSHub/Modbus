@@ -67,7 +67,7 @@ typedef enum {
 static volatile eMBSndState eSndState;
 static volatile eMBRcvState eRcvState;
 
-volatile UCHAR ucRTUBuf[MB_SER_PDU_SIZE_MAX];
+volatile UCHAR ucRTUBuf[MB_SER_PDU_SIZE_MAX + 1];
 
 static volatile UCHAR *pucSndBufferCur;
 static volatile USHORT usSndBufferCount;
@@ -201,7 +201,10 @@ eMBErrorCode eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame,
 BOOL xMBRTUReceiveFSM(void) {
   extern DMA_HandleTypeDef hdma_usart2_rx;
   usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
-  eRcvState = STATE_RX_RCV;
+  if (usRcvBufferPos >= MB_SER_PDU_SIZE_MAX) 
+    eRcvState = STATE_RX_ERROR;
+  else
+    eRcvState = STATE_RX_RCV;
   vMBPortTimersEnable();
   return true;
 }

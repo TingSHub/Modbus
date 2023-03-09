@@ -199,30 +199,12 @@ void DMA1_Stream6_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-#if USE_DMA
-	if(__HAL_UART_GET_FLAG(&huart2,UART_FLAG_IDLE))
+	if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_IDLE))
   {      
     __HAL_UART_CLEAR_IDLEFLAG(&huart2);   
     HAL_UART_DMAStop(&huart2);
     huart2.RxCpltCallback(&huart2);
   }
-#else
-	if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_RXNE))
-  {
-    huart2.RxCpltCallback(&huart2);
-    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_RXNE);
-  }
-  if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_ORE))
-  {
-    uint16_t pucByte = (uint16_t)((&huart2)->Instance->DR & (uint16_t)0x01FF);
-    __HAL_UART_CLEAR_OREFLAG(&huart2);
-  }
-  if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_TC))
-  {
-    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_TC);
-  }
-  // HAL_UART_IRQHandler(&huart2);
-#endif
   /* USER CODE END USART2_IRQn 0 */
   /* USER CODE BEGIN USART2_IRQn 1 */
 

@@ -138,15 +138,9 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
     __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_RXNE);
    __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_TC);
   if (xRxEnable) {
-    /* enable RX interrupt */
-#if USE_DMA
+    /* enable IDLE interrupt */
   __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
-  #define MB_SER_PDU_SIZE_MAX 256 /*!< Maximum size of a Modbus RTU frame. */
-  extern UCHAR ucRTUBuf[];
   HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX);
-#else
-    __HAL_UART_ENABLE_IT(serial, UART_IT_RXNE);
-#endif
     /* switch 485 to receive mode */
     MODBUS_DEBUG("RS485_RX_MODE\r\n");
     SLAVE_RS485_RX_MODE;
@@ -154,12 +148,8 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
     /* switch 485 to transmit mode */
     MODBUS_DEBUG("RS485_TX_MODE\r\n");
     SLAVE_RS485_TX_MODE;
-    /* disable RX interrupt */
-#if USE_DMA
+    /* disable IDLE interrupt */
   __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
-#else
-    __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE);
-#endif
   }
   if (xTxEnable) {
     /* start serial transmit */

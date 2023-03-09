@@ -45,7 +45,7 @@
 
 /* ----------------------- Defines ------------------------------------------*/
 #define MB_SER_PDU_SIZE_MIN 4   /*!< Minimum size of a Modbus RTU frame. */
-#define MB_SER_PDU_SIZE_MAX 256 /*!< Maximum size of a Modbus RTU frame. */
+// #define MB_SER_PDU_SIZE_MAX 256 /*!< Maximum size of a Modbus RTU frame. */
 #define MB_SER_PDU_SIZE_CRC 2   /*!< Size of CRC field in PDU. */
 #define MB_SER_PDU_ADDR_OFF 0   /*!< Offset of slave address in Ser-PDU. */
 #define MB_SER_PDU_PDU_OFF 1    /*!< Offset of Modbus-PDU in Ser-PDU. */
@@ -197,7 +197,6 @@ eMBErrorCode eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame,
   return eStatus;
 }
 
-#if USE_DMA
 BOOL xMBRTUReceiveFSM(void) {
   extern DMA_HandleTypeDef hdma_usart2_rx;
   usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
@@ -208,60 +207,6 @@ BOOL xMBRTUReceiveFSM(void) {
   vMBPortTimersEnable();
   return true;
 }
-#else
-BOOL xMBRTUReceiveFSM(void) {
-  BOOL xTaskNeedSwitch = FALSE;
-  UCHAR ucByte;
-  assert_param(eSndState == STATE_TX_IDLE);
-
-  /* Always read the character. */
-  (void)xMBPortSerialGetByte((CHAR *)&ucByte);
-
-  switch (eRcvState) {
-    /* If we have received a character in the init state we have to
-     * wait until the frame is finished.
-     */
-  case STATE_RX_INIT:
-    vMBPortTimersEnable();
-    break;
-
-    /* In the error state we wait until all characters in the
-     * damaged frame are transmitted.
-     */
-  case STATE_RX_ERROR:
-    vMBPortTimersEnable();
-    break;
-
-    /* In the idle state we wait for a new character. If a character
-     * is received the t1.5 and t3.5 timers are started and the
-     * receiver is in the state STATE_RX_RECEIVCE.
-     */
-  case STATE_RX_IDLE:
-    usRcvBufferPos = 0;
-    ucRTUBuf[usRcvBufferPos++] = ucByte;
-    eRcvState = STATE_RX_RCV;
-
-    /* Enable t3.5 timers. */
-    vMBPortTimersEnable();
-    break;
-
-    /* We are currently receiving a frame. Reset the timer after
-     * every character received. If more than the maximum possible
-     * number of bytes in a modbus frame is received the frame is
-     * ignored.
-     */
-  case STATE_RX_RCV:
-    if (usRcvBufferPos < MB_SER_PDU_SIZE_MAX) {
-      ucRTUBuf[usRcvBufferPos++] = ucByte;
-    } else {
-      eRcvState = STATE_RX_ERROR;
-    }
-    vMBPortTimersEnable();
-    break;
-  }
-  return xTaskNeedSwitch;
-}
-#endif
 
 BOOL xMBRTUTransmitFSM(void) {
   BOOL xNeedPoll = FALSE;

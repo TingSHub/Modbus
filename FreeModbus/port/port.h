@@ -42,7 +42,6 @@
 #define PR_END_EXTERN_C }
 /*IF DEBUG*/
 #define DEBUG 1
-#define USE_DMA 1
 
 #if DEBUG
 #define MODBUS_DEBUG(args...)                                             \
@@ -71,6 +70,9 @@ typedef int16_t SHORT;
 
 typedef uint32_t ULONG;
 typedef int32_t LONG;
+
+#define MB_SER_PDU_SIZE_MAX 256 /*!< Maximum size of a Modbus RTU frame. */
+extern volatile UCHAR ucRTUBuf[];
 
 #ifndef TRUE
 #define TRUE 1

@@ -19,6 +19,7 @@
  * File: $Id: portserial.c,v 1.60 2013/08/13 15:07:05 Armink $
  */
 #include "port.h"
+#include "main.h"
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
 #include "mbport.h"
@@ -30,6 +31,9 @@ static TaskHandle_t thread_serial_soft_trans_irq = NULL;
 static EventGroupHandle_t event_serial;
 /* modbus slave serial device */
 UART_HandleTypeDef *serial;
+/* Using DMA */
+DMA_HandleTypeDef *slave_dma_rx = &hdma_usart2_rx;
+DMA_HandleTypeDef *slave_dma_tx = &hdma_usart2_tx;
 /*
  * Serial FIFO mode
  */
@@ -137,8 +141,8 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
   __HAL_UART_CLEAR_FLAG(serial,UART_FLAG_TC);
   if (xRxEnable) {
     /* enable IDLE interrupt */
-    __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
-    HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX + 1);
+  __HAL_UART_ENABLE_IT(serial, UART_IT_IDLE); //使能IDLE中断
+  HAL_UART_Receive_DMA(serial, ucRTUBuf, MB_SER_PDU_SIZE_MAX);
     /* switch 485 to receive mode */
     MODBUS_DEBUG("RS485_RX_MODE\r\n");
     SLAVE_RS485_RX_MODE;
@@ -147,18 +151,22 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable) {
     MODBUS_DEBUG("RS485_TX_MODE\r\n");
     SLAVE_RS485_TX_MODE;
     /* disable IDLE interrupt */
-    __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
+  __HAL_UART_DISABLE_IT(serial, UART_IT_IDLE);
   }
   if (xTxEnable) {
-    /* start serial transmit */
+    /* start serial transmit */   	
+    __HAL_DMA_ENABLE_IT(slave_dma_tx, DMA_IT_TC); //使能DMA传输完成中断
     xEventGroupSetBits(event_serial, EVENT_SERIAL_TRANS_START);
+  } else {
+    /* stop serial transmit */
+    __HAL_DMA_DISABLE_IT(slave_dma_tx, DMA_IT_TC); //关闭DMA传输完成中断
   }
 }
 
 void vMBPortClose(void) { __HAL_UART_DISABLE(serial); }
 /*Send a byte*/
-BOOL xMBPortSerialPutByte(CHAR ucByte) {
-  stm32_putc(ucByte);
+BOOL xMBPortSerialPutBytes(CHAR *ucByte, uint16_t Size) {
+  HAL_UART_Transmit_DMA(serial, (const uint8_t *)ucByte, Size);
   return TRUE;
 }
 /*Get a byte from fifo*/

@@ -34,7 +34,6 @@
 
 /* ----------------------- Platform includes --------------------------------*/
 #include "port.h"
-
 /* ----------------------- Modbus includes ----------------------------------*/
 #include "mb.h"
 #include "mbframe.h"
@@ -198,8 +197,6 @@ eMBErrorCode eMBRTUSend(UCHAR ucSlaveAddress, const UCHAR *pucFrame,
 }
 
 BOOL xMBRTUReceiveFSM(void) {
-  CHAR tmp;
-	xMBPortSerialGetByte(&tmp);
   switch (eRcvState) {
     case STATE_RX_RCV:
       eRcvState = STATE_RX_ERROR;
@@ -215,10 +212,6 @@ BOOL xMBRTUTransmitFSM(void) {
   BOOL xNeedPoll = FALSE;
 
   assert_param(eRcvState == STATE_RX_IDLE);
-	
-  extern DMA_HandleTypeDef hdma_usart2_tx;
-  __HAL_DMA_ENABLE_IT(&hdma_usart2_tx, DMA_IT_TC); //使能DMA传输完成中断
-
   switch (eSndState) {
     /* We should not get a transmitter event if the transmitter is in
      * idle state.  */
@@ -228,7 +221,7 @@ BOOL xMBRTUTransmitFSM(void) {
     break;
 
   case STATE_TX_XMIT:
-    HAL_UART_Transmit_DMA(serial, (UCHAR*)pucSndBufferCur, usSndBufferCount);
+    xMBPortSerialPutBytes(pucSndBufferCur, usSndBufferCount);
     break;
   }
 
@@ -238,7 +231,8 @@ BOOL xMBRTUTransmitFSM(void) {
 BOOL xMBRTUTimerT35Expired(void) {
   BOOL xNeedPoll = FALSE;
   
-  __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE); //关闭接收中断
+  // 关闭接收完成中断，表示接收完了一帧数据，并且数据数据接收正常
+  __HAL_UART_DISABLE_IT(serial, UART_IT_RXNE); //关闭接收完成中断
 
   switch (eRcvState) {
     /* Timer t35 expired. Startup phase is finished. */
@@ -274,9 +268,8 @@ BOOL xMBRTUTimerT35Expired(void) {
  * @retval None
  */
 void Slave_IDLECallback(UART_HandleTypeDef *huart) {
-  extern DMA_HandleTypeDef hdma_usart2_rx;
-  usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
-  if (usRcvBufferPos >= MB_SER_PDU_SIZE_MAX) 
+  usRcvBufferPos =  MB_SER_PDU_SIZE_MAX - __HAL_DMA_GET_COUNTER(slave_dma_rx);
+  if (usRcvBufferPos >= MB_SER_PDU_SIZE_MAX + 1) 
     eRcvState = STATE_RX_ERROR;
   else
     eRcvState = STATE_RX_RCV;
@@ -284,9 +277,13 @@ void Slave_IDLECallback(UART_HandleTypeDef *huart) {
   vMBPortTimersEnable();
 }
 
-void Slave_DMATransmitCallback(DMA_HandleTypeDef *hdma_usart_rx) {
-  extern DMA_HandleTypeDef hdma_usart2_tx;
-  __HAL_DMA_DISABLE_IT(&hdma_usart2_tx, DMA_IT_TC); //关闭DMA传输完成中断
+/**
+ * @brief  DMA Tx completed callbacks.
+ * @param  huart  Pointer to a UART_HandleTypeDef structure that contains
+ *                the configuration information for the specified DMA module.
+ * @retval None
+ */
+void Slave_DMATransmitCpltCallback(DMA_HandleTypeDef *hdma_usart_rx) {
   xMBPortEventPost(EV_FRAME_SENT);
   /* Disable transmitter. This prevents another transmit buffer
     * empty interrupt. */

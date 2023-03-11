@@ -21,6 +21,7 @@
 
 #ifndef _PORT_H
 #define _PORT_H
+#include "main.h"
 #include "uart.h"
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
@@ -99,3 +100,5 @@ extern __inline bool IS_IRQ(void);
 #endif
 
 extern UART_HandleTypeDef *serial;
+extern DMA_HandleTypeDef *slave_dma_rx;
+extern DMA_HandleTypeDef *slave_dma_tx;

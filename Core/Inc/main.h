@@ -46,7 +46,12 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+extern DMA_HandleTypeDef hdma_usart2_rx;
+extern DMA_HandleTypeDef hdma_usart2_tx;
 extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
+extern TIM_HandleTypeDef htim6;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

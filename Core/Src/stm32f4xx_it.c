@@ -65,7 +65,7 @@ extern TIM_HandleTypeDef htim6;
 /* USER CODE BEGIN EV */
 extern void Slave_RxCpltCallback(UART_HandleTypeDef *huart);
 extern void Slave_IDLECallback(UART_HandleTypeDef *huart);
-extern void Slave_DMATransmitCallback(DMA_HandleTypeDef *hdma_usart_rx);
+extern void Slave_DMATransmitCpltCallback(DMA_HandleTypeDef *hdma_usart_rx);
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -190,7 +190,7 @@ void DMA1_Stream6_IRQHandler(void)
   if (__HAL_DMA_GET_FLAG(&hdma_usart2_tx, DMA_FLAG_TCIF2_6))
   {
     __HAL_DMA_CLEAR_FLAG(&hdma_usart2_tx, DMA_FLAG_TCIF2_6);
-    Slave_DMATransmitCallback(&hdma_usart2_tx);
+    Slave_DMATransmitCpltCallback(&hdma_usart2_tx);
   }
   /* USER CODE END DMA1_Stream6_IRQn 0 */
   /* USER CODE BEGIN DMA1_Stream6_IRQn 1 */
@@ -213,7 +213,8 @@ void USART2_IRQHandler(void)
   }
   if(__HAL_UART_GET_FLAG(&huart2, UART_FLAG_RXNE))
   {      
-    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_RXNE);   
+    char ch = serial->Instance->DR & 0xff; // 取出数据寄存器中数据，进行下一个字节接收
+    __HAL_UART_CLEAR_FLAG(&huart2, UART_FLAG_RXNE);  
     Slave_RxCpltCallback(&huart2);
     // printk("UART_FLAG_RXNE\r\n");
   }

@@ -6,6 +6,8 @@
         "mb.h": "c",
         "mbport.h": "c",
         "task.h": "c",
-        "timers.h": "c"
+        "timers.h": "c",
+        "mbcrc.h": "c",
+        "mbframe.h": "c"
     }
 }

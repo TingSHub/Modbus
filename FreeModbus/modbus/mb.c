@@ -405,7 +405,6 @@ eMBErrorCode eMBPoll( void )
             break;
 
         case EV_FRAME_SENT:
-            MODBUS_DEBUG("EV_FRAME_SENT\r\n");
             break;
         }
     }
